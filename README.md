@@ -22,3 +22,30 @@ From the repo root:
 ```bash
 bash scripts/run_project2.sh customer_shopping_data.csv ',' 1000
 
+## Data Card
+
+**Source & Link:**
+- Name:Customer Shopping Dataset
+- Source:Kaggle
+- URL:https://www.kaggle.com/datasets/mehmettahiraslan/customer-shopping-dataset/data
+- License/Terms:CC0: Public Domain (https://creativecommons.org/publicdomain/zero/1.0/)
+
+**Files & Formats:**
+- Files:customer_shopping_data.csv
+- Formats:CSV
+- Compression:none
+- Approx Size (uncompressed):7.2MB
+- Row/Column Counts:99,458
+
+**Structure:**
+- Delimiter:,
+- Header:present
+- Encoding:us-ascii
+
+**Quality Notes:**
+- Missing fields:none detected(grep -c ",," = 0)
+- Known oddities:Dates use DD/MM/YYYY format (day–month–year), which differs from the MM/DD/YYYY format common in the U.S.
+- Duplicates:none in invoice_no
+
+**Access & Snapshots (to be filled in later):**
+- Will add in part B
