@@ -34,6 +34,12 @@ bash scripts/run_project2.sh "data/Shopping Mall Data in Istanbul/raw/customer_s
 ```
 All outputs will be written to the `out/` and `data/samples/` directories.
 
+
+
+
+
+
+
 ## Data Card
 
 **Source & Link:**
