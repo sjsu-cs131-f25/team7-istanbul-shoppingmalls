@@ -1,5 +1,27 @@
 data/Shopping Mall Data in Istanbul/
 
 
+customer_shopping_data.csv
+data/samples/
+out/
+logs/
+# Common archives/binaries
+*.gz
+*.zip
+*.zst
+*.bz2
+*.xz
+*.parquet
+*.feather
+*.orc
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+
+
 
 

@@ -11,3 +11,14 @@ This project uses the [Customer Shopping Dataset](https://www.kaggle.com/dataset
    ```bash
    pip install kaggle
 
+
+
+
+
+## How to Run (Part E)
+
+From the repo root:
+
+```bash
+bash scripts/run_project2.sh customer_shopping_data.csv ',' 1000
+
