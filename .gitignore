@@ -1,10 +1,15 @@
+# Exclude raw data and artifacts
 data/Shopping Mall Data in Istanbul/
-
-
+data/artifacts/
 customer_shopping_data.csv
-data/samples/
 out/
 logs/
+
+# Exclude all in data/samples except small sample files
+data/samples/*
+!data/samples/customer_shopping_data.sample.csv
+
+# Keep scripts and docs (default, unless excluded above)
 # Common archives/binaries
 *.gz
 *.zip

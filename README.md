@@ -15,12 +15,24 @@ This project uses the [Customer Shopping Dataset](https://www.kaggle.com/dataset
 
 
 
-## How to Run (Part E)
 
-From the repo root:
+## How to Generate a Sample
+
+From the repo root, generate a 1,000-row sample (with header) from the raw CSV:
 
 ```bash
-bash scripts/run_project2.sh customer_shopping_data.csv ',' 1000
+bash scripts/make_sample.sh "data/Shopping Mall Data in Istanbul/raw/customer_shopping_data.csv"
+```
+This creates `data/samples/customer_shopping_data.sample.csv`.
+
+## How to Run the Project
+
+From the repo root, run the main analysis script:
+
+```bash
+bash scripts/run_project2.sh "data/Shopping Mall Data in Istanbul/raw/customer_shopping_data.csv"
+```
+All outputs will be written to the `out/` and `data/samples/` directories.
 
 ## Data Card
 

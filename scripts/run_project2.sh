@@ -31,50 +31,51 @@ ts() { date -u +"%Y-%m-%dT%H:%M:%SZ"; }
   (head -n 1 "$DATAFILE" && tail -n +2 "$DATAFILE" | shuf -n 1000 --random-source=/dev/urandom) \
     > data/samples/customer_shopping_data.sample.csv
 
+
+
   echo "[C] frequency tables (e.g., category, payment_method) -> out/freq_*.txt"
-  cut -d, -f5 customer_shopping_data.csv | tail -n +2 | sort | uniq -c | sort -nr | tee /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/freq_category.txt | head -n 10
+  cut -d, -f5 "$DATAFILE" | tail -n +2 | sort | uniq -c | sort -nr | tee out/freq_category.txt | head -n 10
 
-  cut -d, -f8 customer_shopping_data.csv | tail -n +2 | sort | uniq -c | sort -nr | tee /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/freq_payment_method.txt | head -n 10
-
+  cut -d, -f8 "$DATAFILE" | tail -n +2 | sort | uniq -c | sort -nr | tee out/freq_payment_method.txt | head -n 10
 
   echo "[D] Top-N (e.g., top malls, top spenders) -> out/topN_*.csv"
-  cut -d, -f4 customer_shopping_data.csv | tail -n +2 | sort | uniq -c | sort -nr | head -n 5 | tee /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/top5_ages.txt
+  cut -d, -f4 "$DATAFILE" | tail -n +2 | sort | uniq -c | sort -nr | head -n 5 | tee out/top5_ages.txt
 
-cut -d, -f10 customer_shopping_data.csv | tail -n +2 | sort | uniq -c | sort -nr | head -n 5 | tee /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/top5_malls.txt
+  cut -d, -f10 "$DATAFILE" | tail -n +2 | sort | uniq -c | sort -nr | head -n 5 | tee out/top5_malls.txt
 
-{ echo "customer_id,gender,age"
-  cut -d, -f2,3,4 customer_shopping_data.csv | tail -n +2 | sort -u
-} | tee /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/skinny_customer_demo.csv  | head -n 5
+  { echo "customer_id,gender,age"
+    cut -d, -f2,3,4 "$DATAFILE" | tail -n +2 | sort -u
+  } | tee out/skinny_customer_demo.csv  | head -n 5
 
-{ echo "File stats"
-  wc customer_shopping_data.csv
-  echo "Header"
-  head -n 1 customer_shopping_data.csv
-} > /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/run_summary.txt \
-  2> /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/run_errors.txt
+  { echo "File stats"
+    wc "$DATAFILE"
+    echo "Header"
+    head -n 1 "$DATAFILE"
+  } > out/run_summary.txt \
+    2> out/run_errors.txt
 
-cut -d, -f2 customer_shopping_data.csv | tail -n +2 | sort | uniq -c \
-  > /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/customer_counts.spc
+  cut -d, -f2 "$DATAFILE" | tail -n +2 | sort | uniq -c \
+    > out/customer_counts.spc
 
-sort -k2,2 /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/customer_counts.spc \
-  -o /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/customer_counts.spc
+  sort -k2,2 out/customer_counts.spc \
+    -o out/customer_counts.spc
 
-cut -d, -f2 customer_shopping_data.csv | tail -n +2 > /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/ids.tmp
-cut -d, -f3 customer_shopping_data.csv | tail -n +2 > /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/genders.tmp
-paste /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/ids.tmp \
-      /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/genders.tmp \
-| sort -k1,1 -u \
-> /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/id_gender.spc
+  cut -d, -f2 "$DATAFILE" | tail -n +2 > out/ids.tmp
+  cut -d, -f3 "$DATAFILE" | tail -n +2 > out/genders.tmp
+  paste out/ids.tmp \
+        out/genders.tmp \
+  | sort -k1,1 -u \
+  > out/id_gender.spc
 
-join -1 2 -2 1 \
-  /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/customer_counts.spc \
-  /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/id_gender.spc \
-| sort -nr \
-| tee /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/top_customers_with_gender.txt \
-| head -n 10
+  join -1 2 -2 1 \
+    out/customer_counts.spc \
+    out/id_gender.spc \
+  | sort -nr \
+  | tee out/top_customers_with_gender.txt \
+  | head -n 10
 
-rm -f /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/ids.tmp \
-      /mnt/scratch/CS131_jelenag/projects/team03_sec2/out/genders.tmp
+  rm -f out/ids.tmp \
+        out/genders.tmp
 
 
   echo "=== Run finished: $(ts) ==="
