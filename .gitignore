@@ -2,7 +2,7 @@
 data/Shopping Mall Data in Istanbul/
 data/artifacts/
 customer_shopping_data.csv
-out/
+
 logs/
 
 # Exclude all in data/samples except small sample files
