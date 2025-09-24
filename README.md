@@ -54,5 +54,11 @@ All outputs will be written to the `out/` and `data/samples/` directories.
 - Known oddities:Dates use DD/MM/YYYY format (day–month–year), which differs from the MM/DD/YYYY format common in the U.S.
 - Duplicates:none in invoice_no
 
-**Access & Snapshots (to be filled in later):**
-- Will add in part B
+## Access & Snapshots
+
+- **Raw dataset location:** `customer_shopping_data.csv` (excluded from GitHub via `.gitignore`)
+
+- **Sample:** 1,000 random rows with header generated via:
+  ```bash
+  (head -n 1 customer_shopping_data.csv && tail -n +2 customer_shopping_data.csv | shuf -n 1000) \
+    > data/samples/customer_shopping_data.sample.csv
