@@ -7,10 +7,7 @@ This project uses the [Customer Shopping Dataset](https://www.kaggle.com/dataset
 
 ## How to Download
 
-1. Install the [Kaggle CLI](https://www.kaggle.com/docs/api):
-   ```bash
-   pip install kaggle
-
+1. Install the file from the data from kaggle and put them in data/Shopping Mall Data in Istanbul/raw/
 
 
 
