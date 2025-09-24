@@ -12,7 +12,7 @@ set -euo pipefail
 DATAFILE="${1:-}"
 if [[ -z "${DATAFILE}" || ! -f "${DATAFILE}" ]]; then
   echo "ERROR: provide path to raw CSV, e.g.:"
-  echo "  bash scripts/run_project2.sh customer_shopping_data.csv"
+  echo "  bash scripts/run_project2.sh \"data/Shopping Mall Data in Istanbul/customer_shopping_data.csv\""
   exit 1
 fi
 

@@ -1,0 +1,3 @@
+  44447 Cash
+  34931 Credit Card
+  20079 Debit Card

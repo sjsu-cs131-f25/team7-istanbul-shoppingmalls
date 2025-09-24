@@ -1,0 +1,32 @@
+=== Run started: 2025-09-24T03:29:18Z ===
+Input: data/Shopping Mall Data in Istanbul/customer_shopping_data.csv
+Delimiter: ',' | Header: yes | Encoding: UTF-8/us-ascii
+[B] Sampling 1,000 rows with header -> data/samples/customer_shopping_data.sample.csv
+[C] frequency tables (e.g., category, payment_method) -> out/freq_*.txt
+  34487 Clothing
+  15097 Cosmetics
+  14776 Food & Beverage
+  10087 Toys
+  10034 Shoes
+   4999 Souvenir
+   4996 Technology
+   4981 Books
+  44447 Cash
+  34931 Credit Card
+  20079 Debit Card
+[D] Top-N (e.g., top malls, top spenders) -> out/topN_*.csv
+   2057 37
+   2051 22
+   2002 64
+   2000 43
+   1993 51
+  19943 Mall of Istanbul
+  19823 Kanyon
+  15011 Metrocity
+  10161 Metropol AVM
+   9781 Istinye Park
+customer_id,gender,age
+C100004,Male,61
+C100005,Male,34
+C100006,Male,44
+C100012,Male,25
