@@ -7,7 +7,7 @@ This project uses the [Customer Shopping Dataset](https://www.kaggle.com/dataset
 
 ## How to Download
 
-1. Install the file from the data from kaggle and put them in data/Shopping Mall Data in Istanbul/raw/
+1. Install the file from the data from kaggle and put them in data/Shopping Mall Data in Istanbul
 
 
 
