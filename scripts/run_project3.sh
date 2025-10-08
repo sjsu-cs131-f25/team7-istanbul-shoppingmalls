@@ -11,22 +11,25 @@
 set -e
 
 
+OUT_DIR="out_project3"
+mkdir -p "$OUT_DIR"
+
 # Directories and files
 DATA_DIR="data/Shopping Mall Data in Istanbul"
 DEFAULT_CSV="$DATA_DIR/customer_shopping_data.csv"
 INPUT_CSV="${1:-$DEFAULT_CSV}"
-EDGE_FILE="edges.tsv"
-EDGE_THRESH_FILE="edges_thresholded.tsv"
-ENTITY_COUNTS_FILE="entity_counts.tsv"
-CLUSTER_SIZES_FILE="cluster_sizes.tsv"
-CLUSTER_HIST_FILE="cluster_histogram.png"
-TOP30_CLUSTERS_FILE="top30_clusters.txt"
-TOP30_OVERALL_FILE="top30_overall.txt"
-DIFF_TOP30_FILE="diff_top30.txt"
-CLUSTER_VIZ_FILE="cluster_viz.png"
-LEFT_OUTCOME_FILE="left_outcome.tsv"
-CLUSTER_OUTCOMES_FILE="cluster_outcomes.tsv"
-CLUSTER_OUTCOMES_PNG="cluster_outcomes_plot.png"
+EDGE_FILE="$OUT_DIR/edges.tsv"
+EDGE_THRESH_FILE="$OUT_DIR/edges_thresholded.tsv"
+ENTITY_COUNTS_FILE="$OUT_DIR/entity_counts.tsv"
+CLUSTER_SIZES_FILE="$OUT_DIR/cluster_sizes.tsv"
+CLUSTER_HIST_FILE="$OUT_DIR/cluster_histogram.png"
+TOP30_CLUSTERS_FILE="$OUT_DIR/top30_clusters.txt"
+TOP30_OVERALL_FILE="$OUT_DIR/top30_overall.txt"
+DIFF_TOP30_FILE="$OUT_DIR/diff_top30.txt"
+CLUSTER_VIZ_FILE="$OUT_DIR/cluster_viz.png"
+LEFT_OUTCOME_FILE="$OUT_DIR/left_outcome.tsv"
+CLUSTER_OUTCOMES_FILE="$OUT_DIR/cluster_outcomes.tsv"
+CLUSTER_OUTCOMES_PNG="$OUT_DIR/cluster_outcomes_plot.png"
 
 
 # Step 1: Define relationships (edges)
@@ -162,26 +165,9 @@ else
   echo "python3 not found. Skipping outcomes plot."
 fi
 
-# Move all deliverables to output folder
-OUT_DIR="out_project3"
-mkdir -p "$OUT_DIR"
-mv "$EDGE_FILE" "$OUT_DIR/edges.tsv"
-mv "$EDGE_THRESH_FILE" "$OUT_DIR/edges_thresholded.tsv"
-mv "$ENTITY_COUNTS_FILE" "$OUT_DIR/entity_counts.tsv"
-mv "$CLUSTER_SIZES_FILE" "$OUT_DIR/cluster_sizes.tsv"
-mv "$CLUSTER_HIST_FILE" "$OUT_DIR/cluster_histogram.png"
-mv "$TOP30_CLUSTERS_FILE" "$OUT_DIR/top30_clusters.txt"
-mv "$TOP30_OVERALL_FILE" "$OUT_DIR/top30_overall.txt"
-mv "$DIFF_TOP30_FILE" "$OUT_DIR/diff_top30.txt"
-if [ -f "$CLUSTER_VIZ_FILE" ]; then
-  mv "$CLUSTER_VIZ_FILE" "$OUT_DIR/cluster_viz.png"
-fi
-mv "$LEFT_OUTCOME_FILE" "$OUT_DIR/left_outcome.tsv"
-mv "$CLUSTER_OUTCOMES_FILE" "$OUT_DIR/cluster_outcomes.tsv"
-if [ -f "$CLUSTER_OUTCOMES_PNG" ]; then
-  mv "$CLUSTER_OUTCOMES_PNG" "$OUT_DIR/cluster_outcomes_plot.png"
-fi
-
 echo "All outputs moved to $OUT_DIR/ for project submission."
+echo "Pipeline complete. Outputs generated."
+echo "To use a different dataset, run: $0 <path_to_your_csv_file>"
+echo "All outputs written to $OUT_DIR/ for project submission."
 echo "Pipeline complete. Outputs generated."
 echo "To use a different dataset, run: $0 <path_to_your_csv_file>"
