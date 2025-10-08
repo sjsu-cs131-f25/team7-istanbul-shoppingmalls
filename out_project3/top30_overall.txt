@@ -1,0 +1,8 @@
+  34487 Clothing
+  15097 Cosmetics
+  14776 Food & Beverage
+  10087 Toys
+  10034 Shoes
+   4999 Souvenir
+   4996 Technology
+   4981 Books
