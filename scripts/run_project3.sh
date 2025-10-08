@@ -10,9 +10,11 @@
 # End-to-end pipeline for Istanbul Shopping Malls clustering assignment
 set -e
 
+
 # Directories and files
 DATA_DIR="data/Shopping Mall Data in Istanbul"
-SAMPLE_CSV="$DATA_DIR/customer_shopping_data.csv"
+DEFAULT_CSV="$DATA_DIR/customer_shopping_data.csv"
+INPUT_CSV="${1:-$DEFAULT_CSV}"
 EDGE_FILE="edges.tsv"
 EDGE_THRESH_FILE="edges_thresholded.tsv"
 ENTITY_COUNTS_FILE="entity_counts.tsv"
@@ -26,9 +28,16 @@ LEFT_OUTCOME_FILE="left_outcome.tsv"
 CLUSTER_OUTCOMES_FILE="cluster_outcomes.tsv"
 CLUSTER_OUTCOMES_PNG="cluster_outcomes_plot.png"
 
+
 # Step 1: Define relationships (edges)
+if [ ! -f "$INPUT_CSV" ]; then
+  echo "Error: Input CSV file '$INPUT_CSV' not found."
+  echo "Usage: $0 [input_csv]"
+  exit 1
+fi
+
 echo "Step 1: Extracting edges (category, customer_id)"
-awk -F',' 'NR>1 {print $5"\t"$2}' "$SAMPLE_CSV" | sort > "$EDGE_FILE"
+awk -F',' 'NR>1 {print $5"\t"$2}' "$INPUT_CSV" | sort > "$EDGE_FILE"
 
 # Step 2: Filter significant clusters (frequency >= N)
 echo "Step 2: Filtering clusters by frequency"
@@ -118,7 +127,7 @@ fi
 
 # Step 6: Summary statistics about clusters
 echo "Step 6: Summary statistics with datamash"
-awk -F',' 'NR>1 {gsub(/^[ \t]+|[ \t]+$/, "", $7); if ($7 ~ /^[0-9]+(\.[0-9]+)?$/) print $5"\t"$7}' "$SAMPLE_CSV" | sort > "$LEFT_OUTCOME_FILE"
+awk -F',' 'NR>1 {gsub(/^[ \t]+|[ \t]+$/, "", $7); if ($7 ~ /^[0-9]+(\.[0-9]+)?$/) print $5"\t"$7}' "$INPUT_CSV" | sort > "$LEFT_OUTCOME_FILE"
 awk '{if ($2 ~ /^[0-9]+(\.[0-9]+)?$/) print $1"\t"$2}' "$LEFT_OUTCOME_FILE" | sort | datamash -g 1 count 2 mean 2 median 2 > "$CLUSTER_OUTCOMES_FILE"
 
 # Step 7: Plot summary statistics (embedded Python)
@@ -175,3 +184,4 @@ fi
 
 echo "All outputs moved to $OUT_DIR/ for project submission."
 echo "Pipeline complete. Outputs generated."
+echo "To use a different dataset, run: $0 <path_to_your_csv_file>"

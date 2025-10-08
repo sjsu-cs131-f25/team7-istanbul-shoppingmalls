@@ -2,7 +2,8 @@
 data/Shopping Mall Data in Istanbul/
 data/artifacts/
 customer_shopping_data.csv
-
+# Ignore all out_project folders and files
+out_project3*/
 logs/
 
 # Exclude all in data/samples except small sample files
