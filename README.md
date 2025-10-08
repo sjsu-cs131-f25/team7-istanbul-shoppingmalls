@@ -14,7 +14,7 @@ This project uses the [Customer Shopping Dataset](https://www.kaggle.com/dataset
 
 
 
-## How to Run the Project
+## How to Run the Project 2
 
 From the repo root, run the main analysis script:
 
@@ -23,9 +23,14 @@ bash scripts/run_project2.sh "data/Shopping Mall Data in Istanbul/customer_shopp
 ```
 All outputs will be written to the `out/` and `data/samples/` directories.
 
+## How to Run the Project 3
+From the repo root, run the main analysis script:
 
+```bash
+bash scripts/run_project3.sh  <path_to_your_csv_file> ( can be sample or raw data )
+```
 
-
+All outputs will be written to out_project3/
 
 
 
