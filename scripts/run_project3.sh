@@ -168,6 +168,4 @@ fi
 echo "All outputs moved to $OUT_DIR/ for project submission."
 echo "Pipeline complete. Outputs generated."
 echo "To use a different dataset, run: $0 <path_to_your_csv_file>"
-echo "All outputs written to $OUT_DIR/ for project submission."
-echo "Pipeline complete. Outputs generated."
-echo "To use a different dataset, run: $0 <path_to_your_csv_file>"
+
