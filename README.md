@@ -27,7 +27,7 @@ All outputs will be written to the `out/` and `data/samples/` directories.
 From the repo root, run the main analysis script:
 
 ```bash
-bash scripts/run_project3.sh  <path_to_your_csv_file> ( can be sample or raw data )
+bash scripts/run_project3.sh  ( if you want to run it on sample data bash scripts/run_project3.sh <path_to_sample_data> )
 ```
 
 All outputs will be written to out_project3/
