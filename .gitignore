@@ -4,6 +4,7 @@ data/artifacts/
 customer_shopping_data.csv
 # Ignore all out_project folders and files
 out_project3*/
+out_project4/
 logs/
 
 # Exclude all in data/samples except small sample files
